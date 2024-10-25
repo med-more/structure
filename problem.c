@@ -28,7 +28,7 @@ personne add(){
     scanf("%s", &p.nom);
 
     printf("entrer l'age :");
-    scanf("%s", &p.age);
+    scanf("%d", &p.age);
 
     printf("entrer la rue :");
     scanf("%s", &p.add.rue);
@@ -46,7 +46,7 @@ void afficher(personne p){
 
     printf("\nNom : %s\n", p.nom);
     printf("\nAge : %d\n", p.age);
-    printf("\nAdress de personne\n");
+    printf("\n----Adress de personne----\n");
     printf("\nRue : %s\n", p.add.rue);
     printf("\nVille : %s\n", p.add.ville);
     printf("\ncode postale : %s\n", p.add.code_postal);   
@@ -85,7 +85,7 @@ int main(){
 
     for (;;)
     {
-        printf("\nles choix :\n");
+        printf("\n--------les choix :----------\n");
         printf("\n 1.creer personne\n");
         printf("\n 2.Afficher les personnes\n");
         printf("\n 3.Modifier  personne\n");
@@ -102,17 +102,17 @@ int main(){
             printf("le personne est bien ajouter");
             break;
         case 2:
-            
-          for (int i = 0; i < nbr_personne; i++)
-          {
-           
+        	int i;
+            printf("entrer l'index pour afficher :");
+          scanf("%d", &i); 
+        
             printf("\nNom : %s\n", personnes[i].nom);
             printf("\nAge : %d\n", personnes[i].age);
             printf("\nAdress de personne\n");
             printf("\nRue : %s\n", personnes[i].add.rue);
             printf("\nVille : %s\n", personnes[i].add.ville);
             printf("\ncode postale : %s\n", personnes[i].add.code_postal);
-          }
+          
           break;
           case 3:
 
@@ -127,6 +127,23 @@ int main(){
           {
             printf("pas de personne a modifier");
           }
+        break;
+        
+        case 4 :
+          
+          if(nbr_personne==0){
+          	printf("pas de personne");
+		  }
+		  else{
+		  	printf("entrer l'index a supprimer :");
+          scanf("%d", &index);
+          for (int i = index; i < nbr_personne; i++){
+          	personnes[i]=personnes[i+1];
+		  }
+		  nbr_personne--;
+		  }
+          
+        	
         break;
 
         default:
